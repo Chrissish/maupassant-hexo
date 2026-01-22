@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    background-color: #FFF;
+    background-color: #f8fafc;
     color: #444;
     font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -511,10 +511,10 @@ div {
 }
 
 .page-navigator {
-    border-top: 1px solid #ddd;
+    // border-top: 1px solid #ddd;
     list-style: none;
-    margin-top: 25px;
-    padding: 25px 0 0;
+    margin-top: 15px;
+    padding: 15px 0 0;
     font-size: 14px;
     text-align: center;
 
@@ -2332,8 +2332,8 @@ em.search-keyword {
 
 html[data-dark='true'] {
     background-color: #121212 !important;
-    filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
-    -webkit-filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+    filter: invert(100%) hue-rotate(180deg) brightness(120%) contrast(80%);
+    -webkit-filter: invert(100%) hue-rotate(180deg) brightness(120%) contrast(80%);
 
     img {
         filter: hue-rotate(180deg) contrast(100%) invert(100%);
@@ -2479,4 +2479,86 @@ html[data-dark='true'] {
 
 .article-tag-list {
     padding-left: 0rem;
+}
+
+/* Post Summary Layout (Left Text, Right Image) */
+.post-summary-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 改为 flex-start，避免强制拉伸高度 */
+    padding-top: 15px;
+    margin-bottom: 10px;
+    clear: both; /* 确保在 float 元素下方 */
+}
+
+.post-summary-content {
+    flex: 1;
+    padding-right: 20px;
+    font-size: 15px;
+    line-height: 1.77;
+    color: #444;
+    text-align: justify;
+    text-justify: distribute;
+    word-break: break-word;
+    /* 确保没有 padding-left 影响对齐，通常继承是 0，这里显式声明一下也没问题，但通常没必要 */
+    
+    p {
+        margin: 0 0 1.234em;
+    }
+}
+
+.post-summary-image {
+    width: 30%;
+    flex-shrink: 0; /* 防止被压缩 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+        width: 100%;
+        height: auto; /* 高度自适应 */
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        cursor: default !important;
+        /* 去掉 hover 效果 */
+    }
+}
+
+
+.post-seperator {
+    border-top: 1px solid #ddd;
+    list-style: none;
+    margin-top: 25px;
+    // padding: 25px 0 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .post-summary-wrapper {
+        flex-direction: column-reverse; /* Text bottom, Image top? Or standard column? */
+        /* User didn't specify, but usually image top is better on mobile. */
+        /* But if I use column-reverse, image (2nd child) goes to top? No, column-reverse puts last item first? */
+        /* Flex items: 1. content, 2. image. */
+        /* column-reverse -> Image top, Content bottom. */
+    }
+
+    .post-summary-content {
+        padding-right: 0;
+        padding-top: 15px;
+    }
+
+    .post-summary-image {
+        width: 100%;
+        height: auto;
+        
+        img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9 !important; /* Force override desktop 4:3 */
+        }
+    }
 }
