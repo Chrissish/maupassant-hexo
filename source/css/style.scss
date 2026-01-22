@@ -119,7 +119,7 @@ div {
         }
 
         #logo {
-            font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
+            font: bold 38px/1.12 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
             color: #555;
 
             span,
@@ -303,7 +303,8 @@ div {
         margin: 0;
         color: #555;
         text-align: left;
-        font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+        // font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+        font: bold 25px/1.1 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 
         a {
             color: #555;
@@ -330,13 +331,13 @@ div {
         color: #6E7173;
         float: left;
         display: inline;
-        text-indent: .15em;
+        text-indent: .0em;
 
-        &:before {
-            font-family: "FontAwesome";
-            content: "\f073";
-            padding-right: 0.3em;
-        }
+        // &:before {
+        //     font-family: "FontAwesome";
+        //     content: "\f073";
+        //     padding-right: 0.3em;
+        // }
 
         .category {
             &:before {
@@ -623,7 +624,7 @@ div {
 
     h2 {
         margin: 0;
-        font: bold 25px / 1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+        font: bold 25px/1.1 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     }
 
     .date {
@@ -2546,7 +2547,7 @@ html[data-dark='true'] {
     /* flex: 1; removed because parent is now flex container */
     font-size: 15px;
     line-height: 1.77;
-    color: #444;
+    color: #666;
     text-align: justify;
     text-justify: distribute;
     word-break: break-word;
