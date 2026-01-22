@@ -9,34 +9,35 @@ block title
 block content
   for post in page.posts.toArray()
     .post
-      h1.post-title
-        if post.sticky
-          span(class="top-post")= __('Sticky')
-        include _partial/helpers.pug
-        a(href=url_for(post.path))
-          +title(post)
-      .post-meta= post.date.format(config.date_format)
-      if theme.disqus.enable == true
-        a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
-      if theme.changyan
-        a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
-          span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
-          span= ' ' + __('Comment')
-      if theme.waline.enable == true
-        a.ds-thread-count(href=url_for(post.path) + '#waline')
-          span.waline-comment-count(data-path=url_for(post.path))
-          span= ' ' + __('Comment')
-      .post-summary-wrapper
-        .post-summary-content
-          if post.description
-            != post.description
-          else if post.excerpt
-            != post.excerpt
-          else if post.content
-            - const content = strip_html(post.content)
-            - let expert = content.substring(0,theme.post_content_length)
-            - content.length > theme.post_content_length ? expert += '...' : ''
-            != expert
+      .post-item-wrapper
+        .post-info-wrapper
+          h1.post-title
+            if post.sticky
+              span(class="top-post")= __('Sticky')
+            include _partial/helpers.pug
+            a(href=url_for(post.path))
+              +title(post)
+          .post-meta= post.date.format(config.date_format)
+          if theme.disqus.enable == true
+            a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
+          if theme.changyan
+            a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
+              span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
+              span= ' ' + __('Comment')
+          if theme.waline.enable == true
+            a.ds-thread-count(href=url_for(post.path) + '#waline')
+              span.waline-comment-count(data-path=url_for(post.path))
+              span= ' ' + __('Comment')
+          .post-summary-content
+            if post.description
+              != post.description
+            else if post.excerpt
+              != post.excerpt
+            else if post.content
+              - const content = strip_html(post.content)
+              - let expert = content.substring(0,theme.post_content_length)
+              - content.length > theme.post_content_length ? expert += '...' : ''
+              != expert
         if post.featured_image
           .post-summary-image
             img(src=post.featured_image oncontextmenu="return false;" ondragstart="return false;")
