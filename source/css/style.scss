@@ -42,14 +42,36 @@ body {
     box-sizing: border-box; /* 防止 padding 撑大页面 */
 }
 
+/* Body container styles */
 .body_container {
-    padding: 0 60px;
+    padding: 0 20px;
     max-width: 1150px;
     margin: 0 auto;
 }
 
+/* Post Content Wrapper to handle TOC positioning */
+.post-content-wrapper {
+    position: relative;
+}
+
+/* TOC Sidebar - Absolute positioned relative to content wrapper */
+#toc-sidebar {
+    position: absolute;
+    top: 40px;
+    left: -280px; /* Adjust based on sidebar width + gap */
+    width: 240px;
+    height: 100%; /* Must match wrapper height to allow sticky inside */
+}
+
+/* The actual sticky element */
+.sticky-toc {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20px; /* Distance from viewport top when stuck */
+}
+
 .content_container {
-    padding-right: 50px;
+    padding-right: 40px;
     padding-top: 20px;
 }
 
@@ -145,6 +167,9 @@ div {
     margin-top: 40px;
     padding-bottom: 20px;
     word-wrap: break-word;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 
     .widget {
         margin-bottom: 30px;
@@ -615,7 +640,7 @@ div {
 @media print,
 screen and (max-width: 48em) {
     .body_container {
-        padding: 0 30px;
+        padding: 0 20px;
     }
 
     .content_container {
@@ -1932,20 +1957,24 @@ figure.highlight,
 /* toc*/
 
 .toc-article {
-    border: 1px solid #bbb;
-    border-radius: 7px;
-    margin: 1.1em 0 0 2em;
+    // border: 1px solid #bbb;
+    // border-radius: 7px;
+    margin: 1.1em 0 0 0;
     padding: 0.7em 0.7em 0 0.7em;
-    max-width: 40%;
+    width: 100%;
+    // box-sizing: border-box;
 }
 
 .toc-title {
+    color: #6E7173;
+    line-height: 2.7;
+    border-bottom: 1px solid #bbb;
     font-size: 120%;
 }
 
 #toc {
     line-height: 1em;
-    float: right;
+    float: none;
 
     .toc {
         padding: 0;
@@ -1963,6 +1992,12 @@ figure.highlight,
     }
 }
 
+.sticky-toc {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20px;
+}
+
 @media print,
 screen and (max-width: 48em) {
     .toc-article {
@@ -1976,6 +2011,10 @@ screen and (max-width: 48em) {
 
     #toc {
         float: none;
+    }
+
+    .sticky-toc {
+        position: static;
     }
 }
 

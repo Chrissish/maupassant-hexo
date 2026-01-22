@@ -34,25 +34,29 @@ block content
       a.disqus-comment-count(href=url_for(page.path) + '#waline')
         span.waline-comment-count(id=url_for(page.path))
         span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
+    
+    .post-content-wrapper
+      if page.toc
+        #toc-sidebar
+          #toc.toc-article.sticky-toc
+            .toc-title
+              i.fa.fa-table
+              = ' ' + __('contents')
+            != toc(page.content, {list_number: theme.toc_number})
+      .post-content
+        != page.content
     if theme.donate.enable == true && page.donate != false
       include _widget/donate.pug
-
+  
     if theme.post_copyright.enable == true && page.copyright != false
       include _widget/copyright.pug
-
+  
     if theme.shareto == true
       script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
       a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
-
+  
     include _partial/tag.pug
     include _partial/post_nav.pug
-
+  
     if page.comments
       include _partial/comments.pug
