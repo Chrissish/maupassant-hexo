@@ -2500,20 +2500,24 @@ html[data-dark='true'] {
     margin: 3px;
 }
 
-.article-tag-list-item a {
+.article-tag-list-link {
     text-align: center;
-    color: #555;
+    color: #6E7173;
+    margin-left: 5px;
 }
 
-.article-tag-list-item a::before {
+.article-tag-list-link::before {
     content: "\f02b";
     font-family: FontAwesome;
     margin-right: 4px;
 }
 
-.article-tag-list-item:hover {
-    color: #555;
-    background: #efefef;
+.article-tag-list-link:hover {
+    color: #222;
+}
+
+.article-tag-list-item {
+    display: inline-block; /* Ensure list items are inline */
 }
 
 .article-tag-list {

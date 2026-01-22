@@ -17,7 +17,13 @@ block content
             include _partial/helpers.pug
             a(href=url_for(post.path))
               +title(post)
-          .post-meta= post.date.format(config.date_format)
+          .post-meta
+            = post.date.format(config.date_format)
+            if post.tags && post.tags.length > 0
+              span(style='display:inline-block;width:1em;')= '  '
+              span.tags
+                for tag in post.tags.toArray()
+                  a.article-tag-list-link(href=url_for(tag.path))= tag.name
           if theme.disqus.enable == true
             a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
           if theme.changyan
